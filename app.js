@@ -1,6 +1,12 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
+import { renderGrocery } from './render-utils.js';
+import {
+    completeGrocery
+    createGrocery
+    getGrocerys
+} from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addGroceryForm = document.getElementById('add-grocery-form');

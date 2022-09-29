@@ -34,4 +34,6 @@ export async function createGrocery(grocery) {
     return response;
 }
 
-export async function getGrocery
+export async function getGrocerys() {
+    return await client.from('grocerys').update({ complete: true }).eq('id', id).single();
+}
