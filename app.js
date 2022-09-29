@@ -2,7 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 import { renderGrocery } from './render-utils.js';
-import { completeGrocery, createGrocery, getGrocerys } from './fetch-utils.js';
+import { completeGrocery, createGrocery, getGrocerys, deleteAllGrocerys } from './fetch-utils.js';
 
 /* Get DOM Elements */
 const addGroceryForm = document.getElementById('add-grocery-form');
@@ -37,7 +37,16 @@ addGroceryForm.addEventListener('Submit', async (e) => {
         grocerys.push(grocery);
         displayGrocerys();
     }
-    addGroceryForm.requestFullscreen();
+    addGroceryForm.reset();
+});
+removeButton.addEventListener('click', async () => {
+    const response = await deleteAllGrocerys();
+    error = response.error;
+    if (error) {
+        displayError();
+    } else {
+        grocerys = [];
+    }
 });
 
 /* Display Functions */

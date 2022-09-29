@@ -40,3 +40,8 @@ export async function getGrocerys() {
 export async function completeGrocery(id) {
     return await client.from('grocerys').update({ complete: true }).eq('id', id).single();
 }
+
+export async function deleteAllGrocerys() {
+    const user = getUser();
+    return await client.from('grocerys').delete().eq('user_id', user.id);
+}
