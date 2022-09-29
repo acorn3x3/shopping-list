@@ -42,6 +42,14 @@ addGroceryForm.addEventListener('Submit', async (e) => {
 
 /* Display Functions */
 function displayError() {
+    if (error) {
+        errorDisplay.textContent = error.message;
+    } else {
+        errorDisplay.textContent = '';
+    }
+}
+
+function displayGrocerys() {
     groceryList.innerHtml = '';
 
     for (const grocery of grocerys) {

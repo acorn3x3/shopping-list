@@ -35,5 +35,8 @@ export async function createGrocery(grocery) {
 }
 
 export async function getGrocerys() {
+    return await client.from('grocerys').select('*');
+}
+export async function completeGrocery(id) {
     return await client.from('grocerys').update({ complete: true }).eq('id', id).single();
 }
