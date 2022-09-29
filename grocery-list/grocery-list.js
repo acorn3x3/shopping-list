@@ -3,7 +3,7 @@ import '../auth/auth.js';
 
 import { getUser } from '../fetch-utils.js';
 
-const user = getUser();
-if (!user) {
-    location.replace(`../auth`);
-}
+//const user = getUser();
+//if (!user) {
+//  location.replace(`../auth`);
+//}

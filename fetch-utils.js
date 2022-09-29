@@ -28,3 +28,10 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+export async function createGrocery(grocery) {
+    const response = await client.from('grocerys').insert(grocery).single();
+
+    return response;
+}
+
+export async function getGrocery
