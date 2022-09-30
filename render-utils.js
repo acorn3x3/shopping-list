@@ -3,4 +3,8 @@ export function renderGrocery(grocery) {
     if (grocery.complete === true) {
         li.classList.add('complete');
     }
+    const p = document.createElement('p');
+    p.textContent = grocery.quantity + '' + grocery.description;
+    li.append(p);
+    return li;
 }

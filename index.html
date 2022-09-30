@@ -42,16 +42,23 @@
         <main>
             <p>Welcome to your grocery List</p>
 
-            <label
-                ><input type="number" name="quantity" required placeholder="# of items" min="0"
-            /></label>
-            <label
-                ><input type="text" name="description" required placeholder="Grocery Item"
-            /></label>
-
             <!-- <a id="grocery-list-link" href="grocery-list/index.html">Grocery List</a> -->
 
             <form id="add-grocery-form">
+                <label>
+                    QUANTITY:
+                    <input
+                        type="number"
+                        name="quantity"
+                        required
+                        placeholder="# of items"
+                        min="0"
+                    />
+                </label>
+                <label
+                    >Grocery Item:
+                    <input type="text" name="description" required placeholder="Grocery Item"
+                /></label>
                 <button>Add</button>
             </form>
             <div class="container">
@@ -61,7 +68,7 @@
 
             <div class="grocery-container">
                 <p>Click to complete</p>
-                <ul id="grocery list-list"></ul>
+                <ul id="grocery-list"></ul>
             </div>
         </main>
     </body>

@@ -17,9 +17,15 @@ let error = null;
 window.addEventListener('load', async () => {
     const response = await getGrocerys();
     grocerys = response.data;
+    error = response.error;
+    if (error) {
+        displayError();
+    } else {
+        displayGrocerys();
+    }
 });
 
-addGroceryForm.addEventListener('Submit', async (e) => {
+addGroceryForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(addGroceryForm);
     const newGrocery = {
@@ -35,9 +41,10 @@ addGroceryForm.addEventListener('Submit', async (e) => {
         displayError();
     } else {
         grocerys.push(grocery);
+
         displayGrocerys();
+        addGroceryForm.reset();
     }
-    addGroceryForm.reset();
 });
 removeButton.addEventListener('click', async () => {
     const response = await deleteAllGrocerys();
@@ -46,6 +53,7 @@ removeButton.addEventListener('click', async () => {
         displayError();
     } else {
         grocerys = [];
+        displayGrocerys();
     }
 });
 
@@ -59,16 +67,16 @@ function displayError() {
 }
 
 function displayGrocerys() {
-    groceryList.innerHtml = '';
+    groceryList.innerHTML = '';
 
     for (const grocery of grocerys) {
         const groceryEl = renderGrocery(grocery);
         groceryList.append(groceryEl);
 
         groceryEl.addEventListener('click', async () => {
-            if (grocery.complete === true) {
-                return;
-            }
+            // if (grocery.complete === true) {
+            //     return;
+            // }
 
             const response = await completeGrocery(grocery.id, grocery.complete + true);
             error = response.error;
@@ -78,7 +86,7 @@ function displayGrocerys() {
                 displayError();
             } else {
                 const index = grocerys.indexOf(grocery);
-                grocery[index] = updatedGrocery;
+                grocerys[index] = updatedGrocery;
                 displayGrocerys();
             }
         });
