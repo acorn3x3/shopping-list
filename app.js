@@ -74,9 +74,9 @@ function displayGrocerys() {
         groceryList.append(groceryEl);
 
         groceryEl.addEventListener('click', async () => {
-            // if (grocery.complete === true) {
-            //     return;
-            // }
+            if (grocery.complete === true) {
+                return;
+            }
 
             const response = await completeGrocery(grocery.id, grocery.complete + true);
             error = response.error;

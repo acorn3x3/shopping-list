@@ -4,7 +4,7 @@ export function renderGrocery(grocery) {
         li.classList.add('complete');
     }
     const p = document.createElement('p');
-    p.textContent = grocery.quantity + '' + grocery.description;
+    p.textContent = grocery.quantity + '                    ' + grocery.description;
     li.append(p);
     return li;
 }
